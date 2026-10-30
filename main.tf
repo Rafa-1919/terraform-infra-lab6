@@ -9,16 +9,15 @@ terraform {
 
 provider "docker" {}
 
-# Imagen requerida para el servidor
 resource "docker_image" "nginx" {
   name         = "nginx:alpine"
   keep_locally = false
 }
 
-# Recurso solicitado en el laboratorio
 resource "docker_container" "servidor_lab" {
-  name  = var.container_name
-  image = docker_image.nginx.image_id
+  name         = var.container_name
+  image        = docker_image.nginx.image_id
+  network_mode = "bridge"
   ports {
     internal = 80
     external = var.puerto_externo
