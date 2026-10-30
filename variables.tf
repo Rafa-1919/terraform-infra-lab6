@@ -7,5 +7,5 @@ variable "container_name" {
 variable "puerto_externo" {
   description = "Puerto expuesto en el host"
   type        = number
-  default     = 8082
+  default     = 8085
 }
